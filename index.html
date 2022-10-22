@@ -35,6 +35,8 @@
         
         function getPlayerChoice() {
             let playerChoice = prompt("Choose between paper, rock and scissors");
+
+            //Loop to get the player entering the choice. He will not move on until the choice is valid.
             while (!(playerChoice === 'paper' || playerChoice === 'rock' || playerChoice === 'scissors')) {
               alert("Please introduce paper, rock or scissors");
               playerChoice = prompt("Choose between paper, rock and scissors");
