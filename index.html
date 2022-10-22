@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper-rock-Scissors</title>
+</head>
+<body>
+    
+
+
+    <script>
+      const choices = ["paper", "rock", "scissors"];
+      //console.log(choices);
+
+    
+      
+
+    function game() {
+        let playerPoints = 0;
+        let computerPoints = 0;
+
+      for (let i = 0; i <= 5; i += 1) {                
+    
+        //Here we define both functions for getting both the choice of the user and the computer
+          function getComputerChoice() {
+            function getRandomIntInclusive(min, max) { //Function to get an integer given a range
+              min = Math.ceil(min);
+              max = Math.floor(max);
+              return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+            }
+            return choices[getRandomIntInclusive(0,2)];
+          }
+        
+        function getPlayerChoice() {
+            let playerChoice = prompt("Choose between paper, rock and scissors");
+            while (!(playerChoice === 'paper' || playerChoice === 'rock' || playerChoice === 'scissors')) {
+              alert("Please introduce paper, rock or scissors");
+              playerChoice = prompt("Choose between paper, rock and scissors");
+            }
+            return playerChoice.toLowerCase();
+            
+        }
+    
+        //Here we call both functions
+        let computerChoice = getComputerChoice();
+        console.log(computerChoice);
+    
+        let playerChoice = getPlayerChoice();
+        console.log(playerChoice);
+    
+        //If both have the same option
+        if (playerChoice === computerChoice) alert(`It is a drawn, both have chosen ${playerChoice}`);
+       
+        //If user has paper
+        if (playerChoice === "paper") {
+            //And computer has rock
+            if (computerChoice === "rock") {
+                 alert(`You win this round!!!, ${playerChoice} wins ${computerChoice}`);
+                playerPoints += 1;
+            }
+            //Otherwise (computer has scissors)
+            else if (computerChoice === "scissors") {
+               alert(`You loose this round!!!, ${computerChoice} wins ${playerChoice}`);
+               computerPoints += 1;
+            }   
+        }
+    
+        //If user has rock
+        if (playerChoice === "rock") {
+            //And computer has scissors
+            if (computerChoice === "scissors") {
+
+              alert(`You win this round!!!, ${playerChoice} wins ${computerChoice}`);
+              playerPoints += 1;
+            }
+            //Otherwise (computer has paper)
+            else if (computerChoice === "paper") {
+               alert(`You loose this round!!!, ${computerChoice} wins ${playerChoice}`);
+               computerPoints += 1;
+            } 
+        }
+    
+        //If user has scissors
+        if (playerChoice === "scissors") {
+            //And computer has paper
+            if (computerChoice === "paper") {
+               alert(`You win this round!!!, ${playerChoice} wins ${computerChoice}`);
+               playerPoints += 1;
+            }
+            //Otherwise (computer has rock)
+            else if (computerChoice === "rock") {
+               alert(`You loose this round!!!, ${computerChoice} wins ${playerChoice}`);
+               computerPoints += 1;
+            } 
+        }    
+        console.log(`User: ${playerPoints}\nComputer: ${computerPoints}`);
+
+      }
+
+      if (playerPoints === 5) {
+        return true;
+      } else if (computerPoints === 5) return false;
+    }
+    
+    if (game()) {
+        alert("YOU WIN THE GAME !!!!");
+    } else alert("YOU LOST THE GAME !!!!");
+
+
+    </script>
+</body>
+</html>
